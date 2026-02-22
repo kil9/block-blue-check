@@ -1,0 +1,41 @@
+.bbc-wrapper {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bbc-button {
+  border: 1px solid rgb(83, 100, 113);
+  border-radius: 9999px;
+  background: transparent;
+  color: rgb(231, 233, 234);
+  padding: 7px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.bbc-button:hover {
+  background: rgba(29, 155, 240, 0.15);
+  border-color: rgb(29, 155, 240);
+}
+
+.bbc-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.bbc-status {
+  font-size: 12px;
+  color: rgb(139, 152, 165);
+}
+
+.bbc-status[data-type="success"] {
+  color: rgb(0, 186, 124);
+}
+
+.bbc-status[data-type="warn"] {
+  color: rgb(255, 212, 0);
+}
