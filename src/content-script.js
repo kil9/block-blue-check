@@ -101,12 +101,14 @@
         relatedTargets: [],
         mergedTargets: [],
         actionableAuthors: [],
+        mainAuthor: null,
         authorArticleMap: new Map(),
         verifiedVisibleAuthors: new Set()
       };
     }
 
     const mainArticle = articleNodes[0];
+    const mainAuthor = parseAuthorFromTweet(mainArticle);
     const directMentions = parseMentionsFromTweet(mainArticle);
     const relatedSet = new Set();
     const authorArticleMap = new Map();
@@ -129,7 +131,9 @@
       }
     });
 
-    const mergedTargets = [...new Set([...directMentions, ...relatedSet])];
+    const mergedTargets = [...new Set([...directMentions, ...relatedSet])].filter(
+      (username) => username !== mainAuthor
+    );
     const actionableAuthors = mergedTargets.filter((username) => authorArticleMap.has(username));
 
     return {
@@ -137,6 +141,7 @@
       relatedTargets: [...relatedSet],
       mergedTargets,
       actionableAuthors,
+      mainAuthor,
       authorArticleMap,
       verifiedVisibleAuthors
     };
