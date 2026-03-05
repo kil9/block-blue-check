@@ -127,7 +127,11 @@
       }
       if (index > 0) {
         const mentions = parseMentionsFromTweet(articleEl);
-        mentions.forEach((username) => relatedSet.add(username));
+        mentions.forEach((username) => {
+          if (username !== author) {
+            relatedSet.add(username);
+          }
+        });
       }
     });
 
